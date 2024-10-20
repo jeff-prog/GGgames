@@ -1,15 +1,19 @@
-let clickCount = 0;
+let score = 0;
 
-const clickButton = document.getElementById('clickButton');
-const resetButton = document.getElementById('resetButton');
-const clickCountDisplay = document.getElementById('clickCount');
+const coin = document.getElementById('coin');
+const scoreDisplay = document.getElementById('score');
+const resetButton = document.getElementById('reset-button');
 
-clickButton.addEventListener('click', () => {
-    clickCount++;
-    clickCountDisplay.textContent = `Você clicou ${clickCount} vezes!`;
+// Evento de clique na moeda
+coin.addEventListener('click', () => {
+    score += 10; // Aumenta 10 pontos por clique
+    scoreDisplay.textContent = score;
+    coin.style.transform = `scale(${1 + score / 100})`; // Anima a moeda conforme a pontuação aumenta
 });
 
+// Evento de clique no botão de reset
 resetButton.addEventListener('click', () => {
-    clickCount = 0;
-    clickCountDisplay.textContent = `Você clicou ${clickCount} vezes!`;
+    score = 0;
+    scoreDisplay.textContent = score;
+    coin.style.transform = 'scale(1)';
 });

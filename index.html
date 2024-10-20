@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Moedas</title>
     <link rel="stylesheet" href="style.css">
-    <title>Jogo de Clique</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Bem-vindo ao Jogo de Clique!</h1>
-        <h2 id="clickCount">Você clicou 0 vezes!</h2>
-        <button id="clickButton">Clique aqui!</button>
-        <button id="resetButton">Reiniciar</button>
+    <div class="game-container">
+        <h1>Jogo de Moedas</h1>
+        <div class="coin-container">
+            <img id="coin" src="coin.png" alt="Moeda" class="coin">
+        </div>
+        <div class="score-board">
+            <h2>Pontuação: <span id="score">0</span></h2>
+        </div>
+        <button id="reset-button">Resetar Pontos</button>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
