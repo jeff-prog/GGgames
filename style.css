@@ -1,20 +1,22 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #e2e2e2; /* Fundo cinza */
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%); /* Gradiente de fundo */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Para centralizar verticalmente */
+    height: 100vh;
     margin: 0;
 }
 
 .container {
     text-align: center;
-    background: #ffffff; /* Fundo branco para o conteúdo */
+    background: rgba(255, 255, 255, 0.9); /* Fundo branco com opacidade */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra para o container */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    position: relative;
 }
 
 .header {
@@ -27,9 +29,9 @@ body {
 }
 
 .coin-image {
-    width: 150px; /* Ajuste a largura para uma boa exibição */
-    height: auto; /* Mantenha a proporção */
-    cursor: pointer; /* Indica que a imagem é clicável */
+    width: 150px;
+    height: auto;
+    cursor: pointer;
 }
 
 .energy-bar {
@@ -47,6 +49,15 @@ body {
     width: 100%;
 }
 
+.button-bar {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+}
+
 .btn {
     background: #007bff; /* Azul para os botões */
     color: white;
@@ -55,18 +66,19 @@ body {
     border-radius: 5px;
     cursor: pointer;
     margin: 5px;
+    transition: background 0.3s;
 }
 
 .btn:hover {
-    background: #0056b3; /* Azul mais escuro ao passar o mouse */
+    background: #0056b3;
 }
 
 .menu {
-    display: none; /* Inicialmente escondido */
+    display: none;
 }
 
 .menu.hidden {
-    display: block; /* Exibir menu quando necessário */
+    display: block;
 }
 
 .upgrade-option {
@@ -74,5 +86,5 @@ body {
 }
 
 .upgrade-image {
-    width: 50px; /* Tamanho da imagem de upgrade */
+    width: 50px;
 }
