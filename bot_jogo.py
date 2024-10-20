@@ -5,7 +5,7 @@ async def start(update: Update, context: CallbackContext) -> None:
     keyboard = [
         [
             InlineKeyboardButton(
-                "Jogar", web_app=WebAppInfo(url="https://g-ggames.vercel.app/")  # Coloque aqui o link do seu jogo
+                "Jogar", web_app=WebAppInfo(url="https://g-ggames-5cqc.vercel.app/")  # Coloque aqui o link do seu jogo
             )
         ]
     ]
