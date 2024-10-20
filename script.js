@@ -1,53 +1,47 @@
 let coinCount = 0;
 let coinsPerHour = 100;
 let energy = 100;
-let maxEnergy = 100;
-let energyDecreaseRate = 10;  // Energy lost per click
-let energyRechargeRate = 1;   // Energy recharge per second
-let upgradeCost = 50;         // Base upgrade value for coins per hour
+let energyInterval;
+let upgrades = [500, 1000, 2000];  // Costs of upgrades
+let currentUpgrade = 0;
 
-// Update the stats display
-function updateStats() {
-    document.getElementById("coinCount").innerText = coinCount;
-    document.getElementById("coinsPerHour").innerText = coinsPerHour;
-}
+document.addEventListener('DOMContentLoaded', () => {
+    // Energy auto-recharge
+    energyInterval = setInterval(rechargeEnergy, 1000);
+});
 
-// Handle the click event on the coin
-function clickCoin() {
+function collectCoin() {
     if (energy > 0) {
-        coinCount += Math.floor(coinsPerHour / 3600);  // Gain coins proportional to coinsPerHour
-        energy -= energyDecreaseRate;
-        if (energy < 0) energy = 0;
-        updateStats();
-        updateEnergyBar();
+        coinCount += 1;
+        energy -= 10;
+        document.getElementById('coinCount').textContent = coinCount;
+        document.getElementById('energyBar').textContent = energy + '%';
     }
 }
 
-// Update the energy bar display
-function updateEnergyBar() {
-    let energyBar = document.getElementById("energyBar");
-    let energyText = document.getElementById("energyText");
-
-    energyBar.style.width = energy + "%";
-    energyText.innerText = energy + "%";
-
-    if (energy <= 0) {
-        energyText.innerText = "Out of energy! Wait to recharge.";
+function rechargeEnergy() {
+    if (energy < 100) {
+        energy += 2;
+        document.getElementById('energyBar').textContent = energy + '%';
     }
 }
 
-// Recharge energy over time
-setInterval(function() {
-    if (energy < maxEnergy) {
-        energy += energyRechargeRate;
-        if (energy > maxEnergy) energy = maxEnergy;
-        updateEnergyBar();
-    }
-}, 1000);  // Recharge every second
+function openUpgradeMenu() {
+    document.getElementById('upgradeMenu').classList.remove('hidden');
+}
 
-// Upgrade function to increase coins per hour
-function upgrade() {
-    coinsPerHour += upgradeCost;
-    upgradeCost += 50;  // Increase the cost of each subsequent upgrade
-    updateStats();
+function closeUpgradeMenu() {
+    document.getElementById('upgradeMenu').classList.add('hidden');
+}
+
+function upgrade(level) {
+    if (coinCount >= upgrades[level - 1]) {
+        coinCount -= upgrades[level - 1];
+        coinsPerHour += level * 100;  // Increase coins per hour based on upgrade level
+        document.getElementById('coinCount').textContent = coinCount;
+        document.getElementById('coinsPerHour').textContent = coinsPerHour;
+        alert(`Upgrade level ${level} applied! You now earn ${coinsPerHour} coins per hour.`);
+    } else {
+        alert('Not enough coins for this upgrade!');
+    }
 }
