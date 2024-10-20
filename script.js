@@ -39,12 +39,14 @@ setInterval(regenerateEnergy, 1000); // Recarrega energia a cada segundo
 
 // Ação do botão de Upgrade para abrir o menu
 document.getElementById('upgradeButton').addEventListener('click', () => {
-    upgradeMenu.classList.remove('hidden');
+    upgradeMenu.classList.remove('hidden'); // Mostrar o menu de upgrade
+    document.querySelector('.container').classList.add('hidden'); // Esconder o jogo
 });
 
 // Botão de voltar no menu de upgrade
 document.getElementById('backButton').addEventListener('click', () => {
-    upgradeMenu.classList.add('hidden');
+    upgradeMenu.classList.add('hidden'); // Esconder o menu de upgrade
+    document.querySelector('.container').classList.remove('hidden'); // Mostrar o jogo
 });
 
 // Melhorar ganho de moedas (+50 por hora)
