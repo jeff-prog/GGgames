@@ -4,45 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coin Clicker Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Coin Clicker Game</h1>
-            <div class="stats">
-                <div>Coins: <span id="coinCount">0</span></div>
-                <div>Per Hour: <span id="coinsPerHour">100</span></div>
-                <div>Energy: <span id="energyBar">100%</span></div>
-            </div>
-        </header>
+        <div class="header">
+            <h1>Coins per hour: <span id="coinsPerHour">100</span></h1>
+        </div>
         
         <div class="game-area">
-            <img src="coin.png" alt="Coin" id="coinImage" class="coin" onclick="collectCoin()">
+            <img src="coin.png" alt="coin" id="coin" class="coin-image">
+            <p>Coins: <span id="coins">0</span></p>
         </div>
         
-        <footer>
-            <button id="upgradeButton" onclick="openUpgradeMenu()">Upgrade</button>
-        </footer>
+        <div class="energy-bar">
+            <div id="energy" class="energy-fill"></div>
+        </div>
+        
+        <button id="upgradeButton" class="btn">UPGRADE</button>
     </div>
 
-    <div id="upgradeMenu" class="upgrade-menu hidden">
+    <div id="upgradeMenu" class="menu hidden">
         <h2>Upgrade Menu</h2>
-        <div class="upgrade-item">
-            <img src="upgrade1.png" alt="Upgrade 1" class="upgrade-image">
-            <button onclick="upgrade(1)">Improve (Cost: 500 Coins)</button>
+        <div class="upgrade-option">
+            <img src="upgrade1.png" alt="upgrade1" class="upgrade-image">
+            <button class="btn improve-btn" onclick="upgradeCoinsPerHour(50)">Improve (+50 Coins/hour)</button>
         </div>
-        <div class="upgrade-item">
-            <img src="upgrade2.png" alt="Upgrade 2" class="upgrade-image">
-            <button onclick="upgrade(2)">Improve (Cost: 1000 Coins)</button>
+        <div class="upgrade-option">
+            <img src="upgrade2.png" alt="upgrade2" class="upgrade-image">
+            <button class="btn improve-btn" onclick="upgradeCoinsPerHour(100)">Improve (+100 Coins/hour)</button>
         </div>
-        <div class="upgrade-item">
-            <img src="upgrade3.png" alt="Upgrade 3" class="upgrade-image">
-            <button onclick="upgrade(3)">Improve (Cost: 2000 Coins)</button>
-        </div>
-        <button class="close-menu" onclick="closeUpgradeMenu()">Close Menu</button>
+        <button class="btn" onclick="closeUpgradeMenu()">Back</button>
     </div>
 
-    <script src="script.js"></script>
+    <script src="game.js"></script>
 </body>
 </html>

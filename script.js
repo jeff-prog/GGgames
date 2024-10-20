@@ -1,47 +1,53 @@
-let coinCount = 0;
+let coins = 0;
 let coinsPerHour = 100;
 let energy = 100;
-let energyInterval;
-let upgrades = [500, 1000, 2000];  // Costs of upgrades
-let currentUpgrade = 0;
+let energyRegenRate = 10; // Energy regenerated per second
+let clickEnergyCost = 20;
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Energy auto-recharge
-    energyInterval = setInterval(rechargeEnergy, 1000);
+const coinElement = document.getElementById('coin');
+const coinsElement = document.getElementById('coins');
+const coinsPerHourElement = document.getElementById('coinsPerHour');
+const energyElement = document.getElementById('energy');
+const upgradeMenu = document.getElementById('upgradeMenu');
+
+coinElement.addEventListener('click', () => {
+    if (energy >= clickEnergyCost) {
+        coins += Math.floor(coinsPerHour / 3600); // Coins per click
+        coinsElement.innerText = coins;
+        energy -= clickEnergyCost;
+        updateEnergyBar();
+    }
 });
 
-function collectCoin() {
-    if (energy > 0) {
-        coinCount += 1;
-        energy -= 10;
-        document.getElementById('coinCount').textContent = coinCount;
-        document.getElementById('energyBar').textContent = energy + '%';
-    }
+function updateEnergyBar() {
+    energyElement.style.width = energy + '%';
 }
 
-function rechargeEnergy() {
+function regenerateEnergy() {
     if (energy < 100) {
-        energy += 2;
-        document.getElementById('energyBar').textContent = energy + '%';
+        energy += energyRegenRate;
+        if (energy > 100) energy = 100;
+        updateEnergyBar();
     }
 }
 
-function openUpgradeMenu() {
-    document.getElementById('upgradeMenu').classList.remove('hidden');
-}
+setInterval(regenerateEnergy, 1000);
+
+document.getElementById('upgradeButton').addEventListener('click', () => {
+    upgradeMenu.classList.remove('hidden');
+});
 
 function closeUpgradeMenu() {
-    document.getElementById('upgradeMenu').classList.add('hidden');
+    upgradeMenu.classList.add('hidden');
 }
 
-function upgrade(level) {
-    if (coinCount >= upgrades[level - 1]) {
-        coinCount -= upgrades[level - 1];
-        coinsPerHour += level * 100;  // Increase coins per hour based on upgrade level
-        document.getElementById('coinCount').textContent = coinCount;
-        document.getElementById('coinsPerHour').textContent = coinsPerHour;
-        alert(`Upgrade level ${level} applied! You now earn ${coinsPerHour} coins per hour.`);
+function upgradeCoinsPerHour(amount) {
+    if (coins >= 200) { // Example condition for upgrade
+        coins -= 200;
+        coinsPerHour += amount;
+        coinsElement.innerText = coins;
+        coinsPerHourElement.innerText = coinsPerHour;
     } else {
-        alert('Not enough coins for this upgrade!');
+        alert('Not enough coins!');
     }
 }
