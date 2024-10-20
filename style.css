@@ -1,13 +1,20 @@
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #e2e2e2, #ffffff);
+    background-color: #e2e2e2; /* Fundo cinza */
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 100vh; /* Para centralizar verticalmente */
+    margin: 0;
 }
 
 .container {
     text-align: center;
+    background: #ffffff; /* Fundo branco para o conteúdo */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra para o container */
 }
 
 .header {
@@ -20,9 +27,9 @@ body {
 }
 
 .coin-image {
-    width: 150px; /* Defina a largura da imagem para ajustar */
-    height: auto; /* Mantenha a proporção da imagem */
-    cursor: pointer; /* Mostrar que a imagem é clicável */
+    width: 150px; /* Ajuste a largura para uma boa exibição */
+    height: auto; /* Mantenha a proporção */
+    cursor: pointer; /* Indica que a imagem é clicável */
 }
 
 .energy-bar {
@@ -67,5 +74,5 @@ body {
 }
 
 .upgrade-image {
-    width: 50px; /* Defina um tamanho para a imagem de upgrade */
+    width: 50px; /* Tamanho da imagem de upgrade */
 }
