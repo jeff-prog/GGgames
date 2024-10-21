@@ -1,74 +1,102 @@
-let coins = 0;
-let coinsPerHour = 100;
+let coinCount = parseInt(localStorage.getItem('coinCount')) || 0; // Recupera do localStorage ou começa em 0
 let energy = 100;
-let energyRegenRate = 10; // Energia regenerada por segundo
-let clickEnergyCost = 20; // Energia consumida por clique
+let gainPerHour = parseInt(localStorage.getItem('gainPerHour')) || 0; // Recupera do localStorage ou começa em 0
+let xp = parseInt(localStorage.getItem('xp')) || 0; // Recupera do localStorage ou começa em 0
+let level = parseInt(localStorage.getItem('level')) || 1; // Recupera do localStorage ou começa em 1
 
-const coinElement = document.getElementById('coin');
-const coinsElement = document.getElementById('coins');
-const coinsPerHourElement = document.getElementById('coinsPerHour');
-const energyElement = document.getElementById('energy');
-const upgradeMenu = document.getElementById('upgradeMenu');
+const xpToLevelUpBase = 1000; // XP base para o primeiro nível
+let xpToLevelUp = xpToLevelUpBase + (level - 1) * 200; // XP aumenta a cada nível
 
-// Clique na moeda para ganhar moedas
-coinElement.addEventListener('click', () => {
-    if (energy >= clickEnergyCost) {
-        coins += Math.floor(coinsPerHour / 3600); // Moedas por clique (baseado no ganho por hora)
-        coinsElement.innerText = coins;
-        energy -= clickEnergyCost;
-        updateEnergyBar();
-    } else {
-        alert('Sem energia suficiente! Aguarde recarga.');
-    }
-});
+// Lista de patentes e suas respectivas imagens
+const ranks = [
+    { title: "Private", image: "img/private.jpg" },
+    { title: "Corporal", image: "img/corporal.jpg" },
+    { title: "Sergeant", image: "img/sergeant.jpg" },
+    { title: "Staff Sergeant", image: "img/staff_sergeant.jpg" },
+    { title: "Sergeant Major", image: "img/sergeant_major.jpg" },
+    { title: "Warrant Officer", image: "img/warrant_officer.jpg" },
+    { title: "Second Lieutenant", image: "img/second_lieutenant.jpg" },
+    { title: "First Lieutenant", image: "img/first_lieutenant.jpg" },
+    { title: "Captain", image: "img/captain.jpg" },
+    { title: "Major", image: "img/major.jpg" },
+    { title: "Lieutenant Colonel", image: "img/lieutenant_colonel.jpg" },
+    { title: "Colonel", image: "img/colonel.jpg" },
+    { title: "Brigadier General", image: "img/brigadier_general.jpg" },
+    { title: "Major General", image: "img/major_general.jpg" },
+    { title: "Lieutenant General", image: "img/lieutenant_general.jpg" },
+    { title: "General", image: "img/general.jpg" },
+];
 
-// Atualiza a barra de energia
-function updateEnergyBar() {
-    energyElement.style.width = energy + '%';
-}
-
-// Regeneração de energia com o tempo
-function regenerateEnergy() {
+function recoverEnergy() {
     if (energy < 100) {
-        energy += energyRegenRate;
-        if (energy > 100) energy = 100;
-        updateEnergyBar();
+        energy += 0.5;
+        document.getElementById("energy-level").style.width = energy + "%";
     }
 }
-setInterval(regenerateEnergy, 1000); // Recarrega energia a cada segundo
 
-// Ação do botão de Upgrade para abrir o menu
-document.getElementById('upgradeButton').addEventListener('click', () => {
-    upgradeMenu.classList.remove('hidden'); // Mostrar o menu de upgrade
-    document.querySelector('.container').classList.add('hidden'); // Esconder o jogo
-});
+function clickCoin() {
+    if (energy > 0) {
+        coinCount++;
+        xp += 50; // Ganha 10 XP por moeda
+        document.getElementById("coinCount").textContent = coinCount;
 
-// Botão de voltar no menu de upgrade
-document.getElementById('backButton').addEventListener('click', () => {
-    upgradeMenu.classList.add('hidden'); // Esconder o menu de upgrade
-    document.querySelector('.container').classList.remove('hidden'); // Mostrar o jogo
-});
+        // Verifica se o jogador subiu de nível
+        if (xp >= xpToLevelUp) {
+            level++;
+            xpToLevelUp += 200; // Aumenta a dificuldade de subir de nível
+        }
 
-// Melhorar ganho de moedas (+50 por hora)
-document.getElementById('improve50').addEventListener('click', () => {
-    if (coins >= 200) { // Exemplo de condição para fazer upgrade
-        coins -= 200;
-        coinsPerHour += 50;
-        coinsElement.innerText = coins;
-        coinsPerHourElement.innerText = coinsPerHour;
-    } else {
-        alert('Moedas insuficientes para esse upgrade!');
+        // Atualiza a patente e a imagem correspondente
+        if (level <= ranks.length) {
+            document.getElementById("level").textContent = level;
+            document.getElementById("rankTitle").textContent = ranks[level - 1].title; // Atualiza o título da patente
+            document.getElementById("coin").src = ranks[level - 1].image; // Troca a imagem
+        }
+
+        document.getElementById("xp").textContent = xp;
+
+        // Salvar os dados no localStorage
+        saveGameData();
+
+        energy -= 2;
+        document.getElementById("energy-level").style.width = energy + "%";
     }
-});
+}
 
-// Melhorar ganho de moedas (+100 por hora)
-document.getElementById('improve100').addEventListener('click', () => {
-    if (coins >= 400) { // Exemplo de condição para fazer upgrade
-        coins -= 400;
-        coinsPerHour += 100;
-        coinsElement.innerText = coins;
-        coinsPerHourElement.innerText = coinsPerHour;
-    } else {
-        alert('Moedas insuficientes para esse upgrade!');
-    }
-});
+function saveGameData() {
+    // Salvar as variáveis principais no localStorage
+    localStorage.setItem('coinCount', coinCount);
+    localStorage.setItem('xp', xp);
+    localStorage.setItem('level', level);
+    localStorage.setItem('gainPerHour', gainPerHour);
+}
+
+function upgradeCoinsPerHour() {
+    gainPerHour += 10;
+    document.getElementById("gainPerHour").textContent = gainPerHour;
+    saveGameData(); // Salva os dados atualizados
+}
+
+window.onload = function() {
+    // Restaurar as informações do localStorage
+    document.getElementById("coinsPerHour").textContent = gainPerHour;
+    document.getElementById("coinCount").textContent = coinCount;
+    document.getElementById("xp").textContent = xp;
+    document.getElementById("level").textContent = level;
+    document.getElementById("rankTitle").textContent = ranks[level - 1].title;
+    document.getElementById("coin").src = ranks[level - 1].image;
+    
+    // Iniciar a recuperação de energia
+    energyInterval = setInterval(recoverEnergy, 100);
+};
+
+function resetLevel() {
+    level = 1; // Reseta o nível para 1
+    xp = 0; // Reseta o XP
+    updateLevelDisplay(); // Atualiza a exibição do nível
+}
+
+function updateLevelDisplay() {
+    // Atualize aqui a parte da interface que mostra o nível do jogador
+    document.getElementById("level-display").innerText = "Nível: " + level;
+}

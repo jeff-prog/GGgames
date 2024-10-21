@@ -1,92 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #2c2c2c; /* Fundo cinza escuro */
+    font-family: Arial, sans-serif;
+    background-color: #2c2c2c; /* Fundo cinza */
+    color: white;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: 100vh;
     margin: 0;
 }
 
 .container {
     text-align: center;
-    background: rgba(255, 255, 255, 0.9); /* Fundo branco com opacidade */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    max-width: 400px;
-    position: relative;
+    width: 100%;
+    max-width: 400px; /* Para ajustar melhor no celular */
 }
 
-.header {
+header {
+    text-align: right;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+h1 {
     margin-bottom: 20px;
 }
 
-.game-area {
-    position: relative;
-    margin: 20px 0;
+.circle {
+    width: 360px; /* Ajustado para ser maior */
+    height: 360px; /* Ajustado para ser maior */
+    border-radius: 50%; /* Faz o contorno ser um círculo */
+    border: 5px solid white; /* Borda branca */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto; /* Centraliza o círculo */
+    overflow: hidden; /* Para esconder a parte da imagem que ultrapassa */
 }
 
-.coin-image {
-    width: 150px;
-    height: auto;
+.circle img {
+    width: 100%; /* A imagem ocupará toda a largura do círculo */
+    height: auto; /* Mantém a proporção da imagem */
+    max-height: 100%; /* Limita a altura da imagem para não ultrapassar o círculo */
+    object-fit: cover; /* Faz a imagem preencher o círculo */
     cursor: pointer;
 }
 
 .energy-bar {
-    width: 100%;
-    height: 20px;
-    background: #ccc;
-    margin: 10px 0;
-    border-radius: 10px;
+    width: 300px;
+    height: 30px;
+    background-color: #555;
+    margin: 10px auto;
+    border-radius: 5px;
     overflow: hidden;
 }
 
-.energy-fill {
+#energy-level {
     height: 100%;
-    background: #76ff03; /* Verde para energia */
+    background-color: limegreen;
     width: 100%;
 }
 
-.button-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #000; /* Barra de menu preta */
-    display: flex;
-    justify-content: center;
-    padding: 10px 0;
+.bottom-bar {
+    position: fixed; /* Fixa a barra na parte inferior */
+    bottom: 0; /* Alinha ao fundo da tela */
+    left: 0; /* Começa do lado esquerdo */
+    width: 100%; /* Largura total da tela */
+    background-color: #555; /* Cor de fundo para a barra */
+    display: flex; /* Usa flexbox para alinhar os botões */
+    justify-content: center; /* Centraliza todos os botões dentro da barra */
+    padding: 10px 0; /* Espaçamento vertical dentro da barra */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5); /* Sombra na parte superior da barra */
+    z-index: 1000; /* Certifica que a barra esteja acima de outros elementos */
 }
 
-.btn {
-    background: #007bff; /* Azul para os botões */
-    color: white;
-    padding: 10px 15px;
+button {
+    background-color: orange; /* Botões laranjas */
     border: none;
-    border-radius: 5px;
+    padding: 10px 20px;
     cursor: pointer;
-    margin: 0 5px;
-    transition: background 0.3s;
+    font-size: 16px; /* Ajuste do tamanho da fonte */
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    white-space: nowrap; /* Evita que o texto quebre em várias linhas */
+    overflow: hidden; /* Esconde qualquer texto que ultrapasse o botão */
+    text-overflow: ellipsis; /* Adiciona reticências se o texto for muito longo */
 }
 
-.btn:hover {
-    background: #0056b3;
+.nav-button {
+    margin: 0 10px; /* Espaçamento horizontal entre os botões */
+    min-width: 80px; /* Largura mínima para os botões */
+    padding: 10px; /* Adiciona padding interno aos botões */
+    background-color: orange; /* Cor do fundo do botão */
+    border: none; /* Remove bordas dos botões */
+    border-radius: 5px; /* Bordas arredondadas para os botões */
+    cursor: pointer; /* Muda o cursor para mão ao passar em cima do botão */
+    color: white; /* Cor do texto do botão */
+    text-align: center; /* Centraliza o texto do botão */
 }
 
-.menu {
-    display: none;
+.nav-button:hover {
+    background-color: darkorange; /* Cor ao passar o mouse sobre o botão */
 }
 
-.menu.hidden {
-    display: block;
+table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    text-align: left;
 }
 
-.upgrade-option {
-    margin: 10px 0;
+td {
+    padding: 10px;
+    border-bottom: 1px solid white;
 }
 
-.upgrade-image {
-    width: 50px;
+tr:nth-child(odd) {
+    background-color: #333;
+}
+
+tr:nth-child(even) {
+    background-color: #444;
+}
+
+/* Cores especiais para os três primeiros lugares */
+tr:nth-child(1) {
+    background-color: gold;
+}
+
+tr:nth-child(2) {
+    background-color: silver;
+}
+
+tr:nth-child(3) {
+    background-color: #cd7f32; /* Bronze */
+}
+
+#reset-level {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#reset-level:hover {
+    background-color: darkorange;
 }

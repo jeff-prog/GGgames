@@ -3,42 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coin Clicker Game</title>
+    <title>Click Coin Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Coins per hour: <span id="coinsPerHour">100</span></h1>
-        </div>
-        
-        <div class="game-area">
-            <img src="coin.png" alt="coin" id="coin" class="coin-image">
-            <p>Coins: <span id="coins">0</span></p>
-        </div>
-        
+        <header>
+            <p>Coins/hour: <span id="coinsPerHour">0</span></p>
+            <p>Level: <span id="level">1</span> | XP: <span id="xp">0</span> | Rank: <span id="rankTitle">Private</span></p>
+        </header>
+
         <div class="energy-bar">
-            <div id="energy" class="energy-fill"></div>
+            <div id="energy-level"></div>
         </div>
         
-        <div class="button-bar">
-            <button id="upgradeButton" class="btn">UPGRADE</button>
+        <!-- Círculo em volta da imagem -->
+        <div class="circle">
+            <img id="coin" src="img/private.jpg" alt="Soldado" onclick="clickCoin()">
+        </div>
+
+        <p>Coins: <span id="coinCount">0</span></p>
+        
+        <button id="reset-level" onclick="resetLevel()">Zerar Level para Teste</button>
+
+
+        <!-- Barra inferior com botões -->
+        <div class="bottom-bar">
+            <button class="nav-button" id="homeButton" onclick="window.location.href='index.html'">Home</button>
+            <button class="nav-button" id="upgradeButton" onclick="window.location.href='upgrade.html'">Upgrades</button>
+            <button class="nav-button" id="tasksButton">Tasks</button>
+            <button class="nav-button" id="rankingButton" onclick="window.location.href='ranking.html'">Ranking</button> <!-- Novo botão Ranking -->
         </div>
     </div>
 
-    <div id="upgradeMenu" class="menu hidden">
-        <h2>Upgrade Menu</h2>
-        <div class="upgrade-option">
-            <img src="upgrade1.png" alt="upgrade1" class="upgrade-image">
-            <button class="btn improve-btn" id="improve50">Improve (+50 Coins/hour) - 200 coins</button>
-        </div>
-        <div class="upgrade-option">
-            <img src="upgrade2.png" alt="upgrade2" class="upgrade-image">
-            <button class="btn improve-btn" id="improve100">Improve (+100 Coins/hour) - 400 coins</button>
-        </div>
-        <button class="btn" id="backButton">Back</button>
-    </div>
-
-    <script src="game.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
