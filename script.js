@@ -1,13 +1,12 @@
-let coinCount = parseInt(localStorage.getItem('coinCount')) || 0; // Recupera do localStorage ou começa em 0
+let coinCount = parseInt(localStorage.getItem('coinCount')) || 0;
 let energy = 100;
-let gainPerHour = parseInt(localStorage.getItem('gainPerHour')) || 0; // Recupera do localStorage ou começa em 0
-let xp = parseInt(localStorage.getItem('xp')) || 0; // Recupera do localStorage ou começa em 0
-let level = parseInt(localStorage.getItem('level')) || 1; // Recupera do localStorage ou começa em 1
+let gainPerHour = parseInt(localStorage.getItem('gainPerHour')) || 100;
+let xp = parseInt(localStorage.getItem('xp')) || 0;
+let level = parseInt(localStorage.getItem('level')) || 1;
 
-const xpToLevelUpBase = 1000; // XP base para o primeiro nível
-let xpToLevelUp = xpToLevelUpBase + (level - 1) * 200; // XP aumenta a cada nível
+const xpToLevelUpBase = 1000;
+let xpToLevelUp = xpToLevelUpBase + (level - 1) * 200;
 
-// Lista de patentes e suas respectivas imagens
 const ranks = [
     { title: "Private", image: "img/private.jpg" },
     { title: "Corporal", image: "img/corporal.jpg" },
@@ -37,34 +36,36 @@ function recoverEnergy() {
 function clickCoin() {
     if (energy > 0) {
         coinCount++;
-        xp += 50; // Ganha 10 XP por moeda
+        xp += 50;
         document.getElementById("coinCount").textContent = coinCount;
 
-        // Verifica se o jogador subiu de nível
         if (xp >= xpToLevelUp) {
             level++;
-            xpToLevelUp += 200; // Aumenta a dificuldade de subir de nível
+            xpToLevelUp += 200;
+            updateLevelDisplay();
         }
 
-        // Atualiza a patente e a imagem correspondente
         if (level <= ranks.length) {
             document.getElementById("level").textContent = level;
-            document.getElementById("rankTitle").textContent = ranks[level - 1].title; // Atualiza o título da patente
-            document.getElementById("coin").src = ranks[level - 1].image; // Troca a imagem
+            document.getElementById("rankTitle").textContent = ranks[level - 1].title;
+            document.getElementById("coin").src = ranks[level - 1].image;
         }
 
         document.getElementById("xp").textContent = xp;
 
-        // Salvar os dados no localStorage
         saveGameData();
 
         energy -= 2;
         document.getElementById("energy-level").style.width = energy + "%";
+
+        if (energy <= 0) {
+            alert("Você ficou sem energia!");
+            document.getElementById("energy-level").style.width = "0%";
+        }
     }
 }
 
 function saveGameData() {
-    // Salvar as variáveis principais no localStorage
     localStorage.setItem('coinCount', coinCount);
     localStorage.setItem('xp', xp);
     localStorage.setItem('level', level);
@@ -74,29 +75,69 @@ function saveGameData() {
 function upgradeCoinsPerHour() {
     gainPerHour += 10;
     document.getElementById("gainPerHour").textContent = gainPerHour;
-    saveGameData(); // Salva os dados atualizados
+    saveGameData();
 }
 
 window.onload = function() {
-    // Restaurar as informações do localStorage
     document.getElementById("coinsPerHour").textContent = gainPerHour;
     document.getElementById("coinCount").textContent = coinCount;
     document.getElementById("xp").textContent = xp;
     document.getElementById("level").textContent = level;
     document.getElementById("rankTitle").textContent = ranks[level - 1].title;
     document.getElementById("coin").src = ranks[level - 1].image;
-    
-    // Iniciar a recuperação de energia
-    energyInterval = setInterval(recoverEnergy, 100);
+
+    setInterval(recoverEnergy, 5000);
+    document.getElementById("energy-level").style.width = energy + "%";
 };
 
 function resetLevel() {
-    level = 1; // Reseta o nível para 1
-    xp = 0; // Reseta o XP
-    updateLevelDisplay(); // Atualiza a exibição do nível
+    level = 1;
+    xp = 0;
+    xpToLevelUp = xpToLevelUpBase;
+    saveGameData();
+    updateLevelDisplay();
 }
 
 function updateLevelDisplay() {
-    // Atualize aqui a parte da interface que mostra o nível do jogador
-    document.getElementById("level-display").innerText = "Nível: " + level;
+    document.getElementById("level").textContent = level;
+    document.getElementById("xp").textContent = xp;
+    document.getElementById("xpToLevelUp").textContent = xpToLevelUp;
 }
+
+function showMenu(menuId) {
+    document.querySelectorAll('.menu-content').forEach(menu => menu.style.display = 'none');
+    document.getElementById(menuId + '-menu').style.display = 'block';
+
+    if (menuId === 'upgrades') {
+        showSubMenu('weapons');
+    }
+}
+
+function showSubMenu(subMenuId) {
+    document.querySelectorAll('.menu-content').forEach(submenu => submenu.style.display = 'none');
+    document.getElementById(subMenuId + '-menu').style.display = 'block';
+}
+
+function comprarArma() {
+    alert("Arma comprada!");
+}
+
+function buyEquipment(equipmentId) {
+    alert("Você comprou o equipamento: " + equipmentId);
+}
+
+function buyPersonality(personalityId) {
+    alert("Você comprou a personalidade: " + personalityId);
+}
+
+// Atualizar barra de menu inferior em todas as telas
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.bottom-bar-button').forEach(button => {
+        button.addEventListener('click', event => {
+            const target = event.target.dataset.target;
+            if (target) {
+                window.location.href = target + ".html";
+            }
+        });
+    });
+});

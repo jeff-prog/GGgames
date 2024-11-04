@@ -3,26 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upgrades</title>
+    <title>Upgrade</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Upgrades</h1>
-        <div class="upgrade-item">
-            <p>Increase Coins per Hour</p>
-            <button class="upgrade-button" onclick="upgradeCoinsPerHour()">Upgrade</button>
+
+        <div id="upgrade-menu">
+            <!-- Botões para submenus -->
+            <div class="submenu-buttons">
+                <button onclick="showSubMenu('weapons')" class="submenu-button">Armas</button>
+                <button onclick="showSubMenu('equipments')" class="submenu-button">Equipamentos</button>
+                <button onclick="showSubMenu('personalities')" class="submenu-button">Personalidade</button>
+            </div>
+
+            <!-- Conteúdo do menu de Armas (exibido por padrão) -->
+            <div id="weapons-menu" class="menu-content">
+                <h2>Armas</h2>
+                <div class="arma-container">
+                    <!-- 14 Armas -->
+                    <div class="arma-quadrado">
+                        <img src="img/weapon1.png" alt="Arma 1" class="arma-imagem">
+                        <button class="buy-button" onclick="comprarArma('Arma 1')">Comprar Arma 1</button>
+                    </div>
+
+                    <div class="arma-quadrado">
+                        <img src="img/weapon2.png" alt="Arma 2" class="arma-imagem">
+                        <button class="buy-button" onclick="comprarArma('Arma 2')">Comprar Arma 2</button>
+                    </div>
+
+                    <div class="arma-quadrado">
+                        <img src="img/weapon3.png" alt="Arma 3" class="arma-imagem">
+                        <button class="buy-button" onclick="comprarArma('Arma 3')">Comprar Arma 3</button>
+                    </div>
+
+                    <div class="arma-quadrado">
+                        <img src="img/weapon4.png" alt="Arma 4" class="arma-imagem">
+                        <button class="buy-button" onclick="comprarArma('Arma 4')">Comprar Arma 4</button>
+                    </div>
+
+                    <div class="arma-quadrado">
+                        <img src="img/weapon5.png" alt="Arma 5" class="arma-imagem">
+                        <button class="buy-button" onclick="comprarArma('Arma 5')">Comprar Arma 5</button>
+                    </div>
+
+                    <div class="arma-quadrado">
+                        <img src="img/weapon6.png" alt="Arma 6" class="arma-imagem">
+                        <button class="buy-button" onclick="comprarArma('Arma 6')">Comprar Arma 6</button>
+                    </div>
+
+                    <div class="arma-quadrado">
+                        <img src="img/weapon7.png" alt="Arma 7" class="arma-imagem">
+                        <button class="buy-button" onclick="comprarArma('Arma 7')">Comprar Arma 7</button>
+                    </div>
+
+                    <div class="arma-quadrado">
+                        <img src="img/weapon8.png" alt="Arma 8" class="arma-imagem">
+                        <button class="buy-button" onclick="comprarArma('Arma 8')">Comprar Arma 8</button>
+                    </div>
+
+                    <div class="arma-quadrado">
+                        <img src="img/weapon9.png" alt="Arma 9" class="arma-imagem">
+                        <button class="buy-button" onclick="comprarArma('Arma 9')">Comprar Arma 9</button>
+                    </div>
+
+                    <div class="arma-quadrado">
+                        <img src="img/weapon10.png" alt="Arma 10" class="arma-imagem">
+                        <button class="buy-button" onclick="comprarArma('Arma 10')">Comprar Arma 10</button>
+                    </div>
+
+                    <div class="arma-quadrado">
+                        <img src="img/weapon11.png" alt="Arma 11" class="arma-imagem">
+                        <button class="buy-button" onclick="comprarArma('Arma 11')">Comprar Arma 11</button>
+                    </div>
+
+                    <div class="arma-quadrado">
+                        <img src="img/weapon12.png" alt="Arma 12" class="arma-imagem">
+                        <button class="buy-button" onclick="comprarArma('Arma 12')">Comprar Arma 12</button>
+                    </div>
+
+                    <div class="arma-quadrado">
+                        <img src="img/weapon13.png" alt="Arma 13" class="arma-imagem">
+                        <button class="buy-button" onclick="comprarArma('Arma 13')">Comprar Arma 13</button>
+                    </div>
+
+                    <div class="arma-quadrado">
+                        <img src="img/weapon14.png" alt="Arma 14" class="arma-imagem">
+                        <button class="buy-button" onclick="comprarArma('Arma 14')">Comprar Arma 14</button>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- Conteúdo do menu de Equipamentos -->
+            <div id="equipments-menu" class="menu-content hidden">
+                <h2>Equipamentos</h2>
+                <div class="equipamento-container">
+                    <!-- 9 Equipamentos -->
+                    <div class="equipamento-quadrado">
+                        <img src="img/equipment1.png" alt="Equipamento 1" class="equipamento-imagem">
+                        <button class="buy-button" onclick="buyEquipment('Equipamento 1')">Comprar Equipamento 1</button>
+                    </div>
+                    <div class="equipamento-quadrado">
+                        <img src="img/equipment2.png" alt="Equipamento 2" class="equipamento-imagem">
+                        <button class="buy-button" onclick="buyEquipment('Equipamento 2')">Comprar Equipamento 2</button>
+                    </div>
+                    <div class="equipamento-quadrado">
+                        <img src="img/equipment3.png" alt="Equipamento 3" class="equipamento-imagem">
+                        <button class="buy-button" onclick="buyEquipment('Equipamento 3')">Comprar Equipamento 3</button>
+                    </div>
+                    <div class="equipamento-quadrado">
+                        <img src="img/equipment4.png" alt="Equipamento 4" class="equipamento-imagem">
+                        <button class="buy-button" onclick="buyEquipment('Equipamento 4')">Comprar Equipamento 4</button>
+                    </div>
+                    <div class="equipamento-quadrado">
+                        <img src="img/equipment5.png" alt="Equipamento 5" class="equipamento-imagem">
+                        <button class="buy-button" onclick="buyEquipment('Equipamento 5')">Comprar Equipamento 5</button>
+                    </div>
+                    <div class="equipamento-quadrado">
+                        <img src="img/equipment6.png" alt="Equipamento 6" class="equipamento-imagem">
+                        <button class="buy-button" onclick="buyEquipment('Equipamento 6')">Comprar Equipamento 6</button>
+                    </div>
+                    <div class="equipamento-quadrado">
+                        <img src="img/equipment7.png" alt="Equipamento 7" class="equipamento-imagem">
+                        <button class="buy-button" onclick="buyEquipment('Equipamento 7')">Comprar Equipamento 7</button>
+                    </div>
+                    <div class="equipamento-quadrado">
+                        <img src="img/equipment8.png" alt="Equipamento 8" class="equipamento-imagem">
+                        <button class="buy-button" onclick="buyEquipment('Equipamento 8')">Comprar Equipamento 8</button>
+                    </div>
+                    <div class="equipamento-quadrado">
+                        <img src="img/equipment9.png" alt="Equipamento 9" class="equipamento-imagem">
+                        <button class="buy-button" onclick="buyEquipment('Equipamento 9')">Comprar Equipamento 9</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conteúdo do menu de Personalidade -->
+            <div id="personalities-menu" class="menu-content hidden">
+                <h2>Personalidade</h2>
+                <div class="personalidade-container">
+                    <!-- 10 Personalidades -->
+                    <div class="personalidade-quadrado">
+                        <img src="img/personalidade1.png" alt="Personalidade 1" class="personalidade-imagem">
+                        <button class="buy-button" onclick="buyPersonality('Personalidade 1')">Comprar Personalidade 1</button>
+                    </div>
+                    <div class="personalidade-quadrado">
+                        <img src="img/personalidade2.png" alt="Personalidade 2" class="personalidade-imagem">
+                        <button class="buy-button" onclick="buyPersonality('Personalidade 2')">Comprar Personalidade 2</button>
+                    </div>
+                    <div class="personalidade-quadrado">
+                        <img src="img/personalidade3.png" alt="Personalidade 3" class="personalidade-imagem">
+                        <button class="buy-button" onclick="buyPersonality('Personalidade 3')">Comprar Personalidade 3</button>
+                    </div>
+                    <div class="personalidade-quadrado">
+                        <img src="img/personalidade4.png" alt="Personalidade 4" class="personalidade-imagem">
+                        <button class="buy-button" onclick="buyPersonality('Personalidade 4')">Comprar Personalidade 4</button>
+                    </div>
+                    <div class="personalidade-quadrado">
+                        <img src="img/personalidade5.png" alt="Personalidade 5" class="personalidade-imagem">
+                        <button class="buy-button" onclick="buyPersonality('Personalidade 5')">Comprar Personalidade 5</button>
+                    </div>
+                    <div class="personalidade-quadrado">
+                        <img src="img/personalidade6.png" alt="Personalidade 6" class="personalidade-imagem">
+                        <button class="buy-button" onclick="buyPersonality('Personalidade 6')">Comprar Personalidade 6</button>
+                    </div>
+                    <div class="personalidade-quadrado">
+                        <img src="img/personalidade7.png" alt="Personalidade 7" class="personalidade-imagem">
+                        <button class="buy-button" onclick="buyPersonality('Personalidade 7')">Comprar Personalidade 7</button>
+                    </div>
+                    <div class="personalidade-quadrado">
+                        <img src="img/personalidade8.png" alt="Personalidade 8" class="personalidade-imagem">
+                        <button class="buy-button" onclick="buyPersonality('Personalidade 8')">Comprar Personalidade 8</button>
+                    </div>
+                    <div class="personalidade-quadrado">
+                        <img src="img/personalidade9.png" alt="Personalidade 9" class="personalidade-imagem">
+                        <button class="buy-button" onclick="buyPersonality('Personalidade 9')">Comprar Personalidade 9</button>
+                    </div>
+                    <div class="personalidade-quadrado">
+                        <img src="img/personalidade10.png" alt="Personalidade 10" class="personalidade-imagem">
+                        <button class="buy-button" onclick="buyPersonality('Personalidade 10')">Comprar Personalidade 10</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p>Current Gain: <span id="gainPerHour">0</span> coins/hour</p>
+    </div>
 
-        <!-- Barra inferior com botões -->
-<div class="bottom-bar">
-        <button class="nav-button" id="homeButton" onclick="window.location.href='index.html'">Home</button>
-        <button class="nav-button" id="upgradeButton" onclick="window.location.href='upgrade.html'">Upgrades</button>
-        <button class="nav-button" id="tasksButton">Tasks</button>
-        <button class="nav-button" id="rankingButton" onclick="window.location.href='ranking.html'">Ranking</button> <!-- Adicionando o botão Ranking -->
-</div>
-
+    <!-- Barra inferior -->
+    <div class="bottom-bar">
+        <button class="nav-button bottom-bar-button" data-target="index">Home</button>
+        <button class="nav-button bottom-bar-button" data-target="upgrade">Upgrades</button>
+        <button class="nav-button bottom-bar-button" data-target="tasks">Tasks</button>
+        <button class="nav-button bottom-bar-button" data-target="ranking">Ranking</button>
     </div>
 
     <script src="script.js"></script>

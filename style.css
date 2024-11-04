@@ -1,3 +1,4 @@
+/* Estilo Geral */
 * {
     margin: 0;
     padding: 0;
@@ -10,15 +11,17 @@ body {
     color: white;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    align-items: flex-start; /* Alinha os itens ao topo */
+    min-height: 100vh;
+    padding: 20px; /* Adiciona um espaço nas bordas */
 }
 
+/* Container Principal */
 .container {
     text-align: center;
     width: 100%;
-    max-width: 400px; /* Para ajustar melhor no celular */
+    max-width: 800px; /* Ajustado para uma tela maior */
+    margin-top: 20px; /* Espaço entre o topo da página e o conteúdo */
 }
 
 header {
@@ -31,26 +34,28 @@ h1 {
     margin-bottom: 20px;
 }
 
+/* Círculo para Imagem */
 .circle {
-    width: 360px; /* Ajustado para ser maior */
-    height: 360px; /* Ajustado para ser maior */
-    border-radius: 50%; /* Faz o contorno ser um círculo */
-    border: 5px solid white; /* Borda branca */
+    width: 288px;
+    height: 288px;
+    border-radius: 50%;
+    border: 5px solid white;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px auto; /* Centraliza o círculo */
-    overflow: hidden; /* Para esconder a parte da imagem que ultrapassa */
+    margin: 20px auto;
+    overflow: hidden;
 }
 
 .circle img {
-    width: 100%; /* A imagem ocupará toda a largura do círculo */
-    height: auto; /* Mantém a proporção da imagem */
-    max-height: 100%; /* Limita a altura da imagem para não ultrapassar o círculo */
-    object-fit: cover; /* Faz a imagem preencher o círculo */
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: cover;
     cursor: pointer;
 }
 
+/* Barra de Energia */
 .energy-bar {
     width: 300px;
     height: 30px;
@@ -66,49 +71,51 @@ h1 {
     width: 100%;
 }
 
+/* Barra Inferior */
 .bottom-bar {
-    position: fixed; /* Fixa a barra na parte inferior */
-    bottom: 0; /* Alinha ao fundo da tela */
-    left: 0; /* Começa do lado esquerdo */
-    width: 100%; /* Largura total da tela */
-    background-color: #555; /* Cor de fundo para a barra */
-    display: flex; /* Usa flexbox para alinhar os botões */
-    justify-content: center; /* Centraliza todos os botões dentro da barra */
-    padding: 10px 0; /* Espaçamento vertical dentro da barra */
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5); /* Sombra na parte superior da barra */
-    z-index: 1000; /* Certifica que a barra esteja acima de outros elementos */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #555;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 
 button {
-    background-color: orange; /* Botões laranjas */
+    background-color: orange;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    font-size: 16px; /* Ajuste do tamanho da fonte */
+    font-size: 16px;
     color: white;
     border-radius: 5px;
     transition: background-color 0.3s;
-    white-space: nowrap; /* Evita que o texto quebre em várias linhas */
-    overflow: hidden; /* Esconde qualquer texto que ultrapasse o botão */
-    text-overflow: ellipsis; /* Adiciona reticências se o texto for muito longo */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .nav-button {
-    margin: 0 10px; /* Espaçamento horizontal entre os botões */
-    min-width: 80px; /* Largura mínima para os botões */
-    padding: 10px; /* Adiciona padding interno aos botões */
-    background-color: orange; /* Cor do fundo do botão */
-    border: none; /* Remove bordas dos botões */
-    border-radius: 5px; /* Bordas arredondadas para os botões */
-    cursor: pointer; /* Muda o cursor para mão ao passar em cima do botão */
-    color: white; /* Cor do texto do botão */
-    text-align: center; /* Centraliza o texto do botão */
+    margin: 0 10px;
+    min-width: 80px;
+    padding: 10px;
+    background-color: orange;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    text-align: center;
 }
 
 .nav-button:hover {
-    background-color: darkorange; /* Cor ao passar o mouse sobre o botão */
+    background-color: darkorange;
 }
 
+/* Tabela de Ranking */
 table {
     width: 100%;
     margin: 20px 0;
@@ -142,6 +149,7 @@ tr:nth-child(3) {
     background-color: #cd7f32; /* Bronze */
 }
 
+/* Botão de Reset */
 #reset-level {
     background-color: orange;
     color: white;
@@ -154,4 +162,111 @@ tr:nth-child(3) {
 
 #reset-level:hover {
     background-color: darkorange;
+}
+
+/* Estilo do Menu de Upgrade */
+#upgrade-menu {
+    width: 80%;
+    margin: 20px auto; /* Centraliza e dá espaço em cima e embaixo */
+    padding: 20px;
+}
+
+.submenu-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.submenu-buttons button {
+    padding: 10px 15px;
+    margin: 5px;
+    background-color: #444;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    flex-grow: 1; /* Permite que os botões cresçam igualmente */
+}
+
+.submenu-buttons button:hover {
+    background-color: #555;
+}
+
+/* Estilo dos Conteúdos de Menu */
+.menu-content {
+    display: none;
+}
+
+.item, .personality-item {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 8px;
+    display: flex; /* Para alinhar imagem e texto lado a lado */
+    align-items: center; /* Alinha verticalmente */
+}
+
+.item img, .personality-item img {
+    width: 100px; /* Ajustado para um tamanho mais apropriado */
+    height: auto;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.item p, .personality-item p {
+    margin: 10px 0;
+    flex-grow: 1; /* Permite que o texto utilize o espaço disponível */
+}
+
+/* Botão de Compra */
+.buy-button.green {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buy-button.green:hover {
+    background-color: #45a049;
+}
+
+/* Estilo para Personalidades e Equipamentos */
+.equipamento-item, .personality-item {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #444;
+    border-radius: 8px;
+}
+
+.arma-container, .equipamento-container, .personality-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas */
+    gap: 15px; /* Espaçamento entre os itens */
+}
+
+.arma-quadrado, .equipamento-quadrado, .personalidade-quadrado {
+    border: 2px solid #ccc; /* Borda para o quadrado */
+    padding: 10px; /* Espaçamento interno */
+    text-align: center; /* Centraliza o conteúdo dentro do quadrado */
+}
+
+.arma-imagem, .equipamento-imagem, .personalidade-imagem {
+    border: 2px solid black; /* Borda preta para a imagem */
+    width: 100%; /* A imagem ocupará toda a largura do quadrado */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+.buy-button {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
 }
