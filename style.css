@@ -10,10 +10,11 @@ body {
     background-color: #2c2c2c; /* Fundo cinza */
     color: white;
     display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Alinha os itens ao topo */
+    flex-direction: column; /* Permite a rolagem em telas menores */
+    align-items: center; /* Centraliza horizontalmente */
     min-height: 100vh;
     padding: 20px; /* Adiciona um espaço nas bordas */
+    overflow-y: auto; /* Permite rolagem vertical */
 }
 
 /* Container Principal */
@@ -24,6 +25,7 @@ body {
     margin-top: 20px; /* Espaço entre o topo da página e o conteúdo */
 }
 
+/* Estilo de Cabeçalho */
 header {
     text-align: right;
     padding: 10px;
@@ -57,7 +59,8 @@ h1 {
 
 /* Barra de Energia */
 .energy-bar {
-    width: 300px;
+    width: 100%; /* Ajusta a barra de energia para ocupar 100% da largura */
+    max-width: 300px; /* Largura máxima da barra */
     height: 30px;
     background-color: #555;
     margin: 10px auto;
@@ -243,7 +246,7 @@ tr:nth-child(3) {
 
 .arma-container, .equipamento-container, .personality-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 colunas */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* 4 colunas, responsivo */
     gap: 15px; /* Espaçamento entre os itens */
 }
 
