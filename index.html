@@ -8,23 +8,32 @@
 </head>
 <body>
     <div class="container">
+        <!-- Cabeçalho com informações de moedas por hora, nível, XP e rank -->
         <header>
-            <h1 id="total-coins">Total de Moedas: <span id="coinCount">0</span></h1>
-            <p>Ganho por Hora: <span id="coinsPerHour">100</span></p>
-            <p>Nível: <span id="level">1</span> | XP: <span id="xp">0</span> | Rank: <span id="rankTitle">Private</span></p>
-            <h2>XP para próximo nível: <span id="xp-next-level">1000</span></h2>
-            <h2>Energia: <span id="energy-amount">100</span></h2>
-            <div class="energy-bar">
-                <div id="energy-level"></div>
+            <p>Coins p/hour: <span id="coinsPerHour">100</span></p>
+            <p>Level: <span id="level">1</span> | XP: <span id="xp">0</span> | Rank: <span id="rankTitle">Private</span></p>
+            <!-- Barra de energia -->
+            <div class="energy-container">
+                <div class="energy-bar">
+                    <div id="energy-level">
+                        <span id="energy-amount">100%</span>
+                    </div>
+                </div>
             </div>
         </header>
-
+        
+        <!-- Contador total de moedas -->
+        <h1 id="total-coins">Coins: <span id="coinCount">0</span></h1>
+        
+        <!-- Imagem da moeda (círculo clicável) -->
         <div class="circle">
             <img id="coin" src="img/private.jpg" alt="Private" onclick="clickCoin()">
         </div>
 
+        <!-- Botão para resetar o nível (apenas para testes) -->
         <button id="reset-level" onclick="resetLevel()">Zerar Level para Teste</button>
 
+        <!-- Barra de navegação inferior com links para diferentes telas -->
         <div class="bottom-bar">
             <button class="nav-button" id="homeButton" onclick="window.location.href='index.html'">Home</button>
             <button class="nav-button" id="upgradeButton" onclick="window.location.href='upgrade.html'">Upgrades</button>
@@ -33,6 +42,7 @@
         </div>
     </div>
 
+    <!-- Importa o script do jogo -->
     <script src="script.js"></script>
 </body>
 </html>

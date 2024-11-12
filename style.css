@@ -1,42 +1,52 @@
-/* Estilo Geral */
+/* Reset de margens e bordas */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Estilos para o corpo da página */
 body {
     font-family: Arial, sans-serif;
-    background-color: #2c2c2c; /* Fundo cinza */
+    background-color: #2c2c2c; /* Fundo cinza escuro */
     color: white;
     display: flex;
-    flex-direction: column; /* Permite a rolagem em telas menores */
-    align-items: center; /* Centraliza horizontalmente */
+    flex-direction: column; /* Permite rolagem em telas menores */
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
     min-height: 100vh;
-    padding: 20px; /* Adiciona um espaço nas bordas */
+    padding: 20px;
     overflow-y: auto; /* Permite rolagem vertical */
+    width: 100%;
 }
 
-/* Container Principal */
+/* Container principal com limite de largura */
 .container {
     text-align: center;
     width: 100%;
-    max-width: 800px; /* Ajustado para uma tela maior */
-    margin-top: 20px; /* Espaço entre o topo da página e o conteúdo */
+    max-width: 300px;
+    margin-top: 10px;
 }
 
-/* Estilo de Cabeçalho */
+/* Estilos para o cabeçalho */
 header {
     text-align: right;
     padding: 10px;
     margin-bottom: 10px;
 }
 
+/* Título principal da página */
 h1 {
     margin-bottom: 20px;
+    font-size: 24px;
 }
 
-/* Círculo para Imagem */
+/* Estilo para o cabeçalho de moedas */
+.coins-header {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+/* Círculo para a imagem da moeda */
 .circle {
     width: 288px;
     height: 288px;
@@ -49,6 +59,7 @@ h1 {
     overflow: hidden;
 }
 
+/* Imagem da moeda */
 .circle img {
     width: 100%;
     height: auto;
@@ -57,10 +68,10 @@ h1 {
     cursor: pointer;
 }
 
-/* Barra de Energia */
+/* Barra de energia */
 .energy-bar {
-    width: 100%; /* Ajusta a barra de energia para ocupar 100% da largura */
-    max-width: 300px; /* Largura máxima da barra */
+    width: 100%;
+    max-width: 300px;
     height: 30px;
     background-color: #555;
     margin: 10px auto;
@@ -68,13 +79,14 @@ h1 {
     overflow: hidden;
 }
 
+/* Nível de energia */
 #energy-level {
     height: 100%;
     background-color: limegreen;
     width: 100%;
 }
 
-/* Barra Inferior */
+/* Barra inferior de navegação */
 .bottom-bar {
     position: fixed;
     bottom: 0;
@@ -88,12 +100,13 @@ h1 {
     z-index: 1000;
 }
 
+/* Estilos para botões gerais */
 button {
     background-color: orange;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
     color: white;
     border-radius: 5px;
     transition: background-color 0.3s;
@@ -102,6 +115,7 @@ button {
     text-overflow: ellipsis;
 }
 
+/* Botões de navegação */
 .nav-button {
     margin: 0 10px;
     min-width: 80px;
@@ -118,7 +132,7 @@ button {
     background-color: darkorange;
 }
 
-/* Tabela de Ranking */
+/* Tabela de ranking */
 table {
     width: 100%;
     margin: 20px 0;
@@ -131,6 +145,7 @@ td {
     border-bottom: 1px solid white;
 }
 
+/* Alternância de cores nas linhas da tabela */
 tr:nth-child(odd) {
     background-color: #333;
 }
@@ -139,7 +154,7 @@ tr:nth-child(even) {
     background-color: #444;
 }
 
-/* Cores especiais para os três primeiros lugares */
+/* Cores especiais para as três primeiras posições */
 tr:nth-child(1) {
     background-color: gold;
 }
@@ -149,16 +164,16 @@ tr:nth-child(2) {
 }
 
 tr:nth-child(3) {
-    background-color: #cd7f32; /* Bronze */
+    background-color: #cd7f32;
 }
 
-/* Botão de Reset */
+/* Botão de reset de nível */
 #reset-level {
     background-color: orange;
     color: white;
     border: none;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     border-radius: 5px;
 }
@@ -167,35 +182,37 @@ tr:nth-child(3) {
     background-color: darkorange;
 }
 
-/* Estilo do Menu de Upgrade */
+/* Estilo do menu de upgrade */
 #upgrade-menu {
-    width: 80%;
-    margin: 20px auto; /* Centraliza e dá espaço em cima e embaixo */
+    width: 90%;
+    margin: 20px auto;
     padding: 20px;
 }
 
+/* Botões para submenus */
 .submenu-buttons {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
     margin-bottom: 20px;
 }
 
 .submenu-buttons button {
     padding: 10px 15px;
-    margin: 5px;
+    margin: 5px 0;
     background-color: #444;
     color: white;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
-    flex-grow: 1; /* Permite que os botões cresçam igualmente */
+    width: 100%;
 }
 
 .submenu-buttons button:hover {
     background-color: #555;
 }
 
-/* Estilo dos Conteúdos de Menu */
+/* Conteúdo dos menus */
 .menu-content {
     display: none;
 }
@@ -205,12 +222,12 @@ tr:nth-child(3) {
     padding: 10px;
     background-color: #333;
     border-radius: 8px;
-    display: flex; /* Para alinhar imagem e texto lado a lado */
-    align-items: center; /* Alinha verticalmente */
+    display: flex;
+    align-items: center;
 }
 
 .item img, .personality-item img {
-    width: 100px; /* Ajustado para um tamanho mais apropriado */
+    width: 100px;
     height: auto;
     border-radius: 5px;
     margin-right: 15px;
@@ -218,10 +235,10 @@ tr:nth-child(3) {
 
 .item p, .personality-item p {
     margin: 10px 0;
-    flex-grow: 1; /* Permite que o texto utilize o espaço disponível */
+    flex-grow: 1;
 }
 
-/* Botão de Compra */
+/* Botão de compra */
 .buy-button.green {
     background-color: #4CAF50;
     color: white;
@@ -236,40 +253,77 @@ tr:nth-child(3) {
     background-color: #45a049;
 }
 
-/* Estilo para Personalidades e Equipamentos */
-.equipamento-item, .personality-item {
+/* Estilo para personalidades e equipamentos */
+.equipamento-item, .personalidade-item {
     margin: 15px 0;
     padding: 10px;
     background-color: #444;
     border-radius: 8px;
 }
 
-.arma-container, .equipamento-container, .personality-container {
+/* Grid para listas de itens */
+.arma-container, .equipamento-container, .personalidade-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* 4 colunas, responsivo */
-    gap: 15px; /* Espaçamento entre os itens */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
 }
 
-.arma-quadrado, .equipamento-quadrado, .personalidade-quadrado {
-    border: 2px solid #ccc; /* Borda para o quadrado */
-    padding: 10px; /* Espaçamento interno */
-    text-align: center; /* Centraliza o conteúdo dentro do quadrado */
+/* Estilo específico das armas */
+.arma-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Define 4 colunas para armas */
+    gap: 15px;
+    margin-top: 20px;
 }
 
-.arma-imagem, .equipamento-imagem, .personalidade-imagem {
-    border: 2px solid black; /* Borda preta para a imagem */
-    width: 100%; /* A imagem ocupará toda a largura do quadrado */
-    height: auto; /* Mantém a proporção da imagem */
+.arma-item {
+    text-align: center;
 }
 
-.buy-button {
-    background-color: green;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
+.arma-imagem {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid black;
+    display: block;
+    margin: 0 auto 10px;
 }
 
-.hidden {
-    display: none;
+/* Ajustes para responsividade em dispositivos móveis */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 10px;
+    }
+
+    .circle {
+        width: 200px;
+        height: 200px;
+    }
+
+    .coins-header {
+        font-size: 18px;
+    }
+
+    .bottom-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 5px 10px;
+    }
+
+    .nav-button {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .submenu-buttons button {
+        font-size: 12px;
+        padding: 8px;
+    }
 }
